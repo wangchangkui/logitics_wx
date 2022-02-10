@@ -59,6 +59,7 @@ Page({
       }
       Promise.all(promiseArr).then(res=>{
         console.log(res)
+        
       })
 
     }
