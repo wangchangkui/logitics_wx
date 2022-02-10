@@ -1,0 +1,35 @@
+<view class="nav">
+  <view class="nav_1">
+    <van-dropdown-menu>
+      <van-dropdown-item bind:change="bind" data-id="0" value="{{ value1 }}" options="{{ option1 }}" />
+      <van-dropdown-item bind:change="bind" data-id="a" value="{{ value2 }}" options="{{ option2 }}" />
+    </van-dropdown-menu>
+  </view>
+</view>
+
+<view class="bd" wx:if="{{ show }}">
+  <van-empty image="network" description="网络错误" />
+</view>
+
+<van-dialog id="van-dialog" />
+<view class="bd">
+  <van-empty description="无内容" wx:if="{{ !order && !show }}" />
+  <view wx:for="{{ order }}" wx:key="index">
+    <van-panel title="{{order[index].goodsName + '订单'}}" desc="快递订单">
+      <view>
+        <van-cell-group>
+          <van-field value="{{order[index].createTime}}" label="订单时间" left-icon="aim" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field value="{{order[index].money}}" label="赏金" left-icon="balance-pay" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-card desc="{{order[index].address}}" title="配送地址">
+          <view slot="footer">
+            <van-button type="info" size="normal" bindtap="getOrder" data-id="{{ order[index].orderId }}">抢单</van-button>
+          </view>
+        </van-card>
+      </view>
+    </van-panel>
+    <van-divider />
+  </view>
+</view>

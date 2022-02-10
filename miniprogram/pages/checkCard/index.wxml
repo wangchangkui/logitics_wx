@@ -1,0 +1,25 @@
+<view class="nav">
+  <van-nav-bar title="个人信息" left-text="返回" left-arrow bind:click-left="onClickLeft" safe-area-inset-top="false" placeholder="true" custom-style="padding: 0;" />
+</view>
+
+<van-toast id="van-toast" />
+
+<view class="bd">
+
+  <van-cell-group>
+    <view>
+      <van-cell-group>
+        <van-cell title="" value="" label="点击下方上传身份证的正面照片" border="{{ true }}" />
+      </van-cell-group>
+      <view class="h_img">
+        <van-uploader file-list="{{ fileList }}" deletable="{{ true }}" max-count="1" bind:delete="delete" upload-text="点击上传"  bind:after-read="afterRead" />
+      </view>
+    </view>
+    <van-field model:value="{{ name }}" label="名称" />
+    <van-field model:value="{{ card }}" type="text" label="身份证" />
+  </van-cell-group>
+</view>
+
+<view class="ft">
+  <van-button type="info" size="large" bindtap="check">验证信息</van-button>
+</view>

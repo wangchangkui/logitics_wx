@@ -1,0 +1,17 @@
+/* pages/onlineOrder/index.wxss */
+/* pages/myAddress/index.wxss */
+.nav{
+  width: 100%;
+  background-color:#fdfdfd;
+  margin: 0px auto;
+  box-shadow: 0 0 9px 3px #999;
+}
+
+
+.bd{
+  width: 100%;
+  background-color:#fdfdfd;
+  margin: 10px auto;
+  box-shadow: 0 0 9px 3px #999;
+}
+

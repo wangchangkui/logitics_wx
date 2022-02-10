@@ -1,0 +1,7 @@
+<!--miniprogram/pages/message/message.wxml-->
+<text>miniprogram/pages/message/message.wxml</text>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="chat-o">个人信息</van-tabbar-item>
+  <van-tabbar-item icon="user-o">我的</van-tabbar-item>
+</van-tabbar>

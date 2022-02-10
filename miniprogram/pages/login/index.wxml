@@ -1,0 +1,45 @@
+
+<view class="imgs">
+  <van-image
+  width="8rem"
+  height="3rem"
+  fit="contain"
+  src="https://s4.ax1x.com/2022/01/19/7DOlZj.png"
+/>
+</view>
+
+<view class="bd">
+  <van-cell-group>
+  <van-field
+  model:value="{{ phone }}"
+    required
+    clearable
+    label="手机号"
+    type="number"
+    placeholder="手机号"
+    bind:click-icon="onClickIcon"
+  />
+
+  <van-field
+  model:value="{{ sms }}"
+    center
+    clearable
+    label="短信验证码"
+    placeholder="请输入短信验证码"
+    border="{{ false }}"
+    use-button-slot
+  >
+    <van-button slot="button" loading wx:if="{{ time !=0  }}" loading-text="{{ time }}" disable size="small" type="primary" />
+    <van-button slot="button"  wx:if="{{ time ==0  }}" size="small" type="primary" bindtap="sendSms">
+      发送验证码
+    </van-button>
+  </van-field>
+</van-cell-group>
+</view>
+
+<view class="ft"> 
+  <van-button type="info" size="large" bindtap="check">手机号登录</van-button>
+</view>
+<view class="ft1"> 
+ <van-button type="primary" size="large" bindtap="LoginSys">微信快速登录注册</van-button>
+</view>

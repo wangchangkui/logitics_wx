@@ -1,0 +1,34 @@
+<view class="nav">
+  <van-nav-bar title="我的地址" left-text="返回" right-text="新增" left-arrow bind:click-left="onClickLeft" safe-area-inset-top="false" placeholder="true" custom-style="padding: 0;" bind:click-right="onClickRight" />
+</view>
+
+<view class="bd" >
+  <van-panel title="默认地址" desc="{{address.username}} : {{address.phone}}">
+      <view>
+        <van-card desc="{{address.address}}" title="地址">
+          <view slot="footer">
+            <van-button size="mini"  bind:click="edit" data-id="{{address.id}}">编辑</van-button>
+            <van-button size="mini"  bindtap="delete" data-id="{{address.id}}">删除</van-button>
+          </view>
+        </van-card>
+      </view>
+    </van-panel>
+    <van-divider />
+</view>
+
+<view class="bd">
+  <view wx:for="{{ allAddress }}" wx:key="index">
+    <van-panel title="其他地址" desc="{{allAddress[index].username}} : {{allAddress[index].phone}}">
+      <view>
+        <van-card desc="{{allAddress[index].address}}" title="地址">
+          <view slot="footer">
+            <van-button size="mini" bindtap="isCheck" data-id="{{allAddress[index].id}},{{allAddress[index].userId}}">设置默认</van-button>
+            <van-button size="mini" bind:click="edit" data-id="{{allAddress[index].id}}">编辑</van-button>
+            <van-button size="mini" bindtap="delete" data-id="{{allAddress[index].id}}">删除</van-button>
+          </view>
+        </van-card>
+      </view>
+    </van-panel>
+    <van-divider />
+  </view>
+</view>

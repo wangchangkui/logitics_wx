@@ -1,0 +1,64 @@
+
+<view class="nav">
+  <van-nav-bar
+  title="个人信息"
+  left-text="返回"
+  left-arrow
+  bind:click-left="onClickLeft"
+  safe-area-inset-top="false"
+  placeholder="true"
+  custom-style="padding: 0;"
+/>
+</view>
+
+<view class="header">
+  <view class="h_img">
+    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+  </view>
+</view>
+
+<view class="bd">
+  <van-cell-group>
+  <van-field
+  model:value="{{ name }}"
+    label="名称"
+  />
+
+  <van-field
+  model:value="{{ phone }}"
+    type="text"
+    label="电话"
+
+  />
+
+  <van-field
+    model:value="{{ sex }}"
+    type="text"
+    label="性别"
+  />
+
+  <van-field
+  model:value="{{ address }}"
+    label="地址"
+    type="text"
+  />
+  <van-field
+  model:value="{{ sms }}"
+    center
+    clearable
+    label="短信验证码"
+    placeholder="请输入短信验证码"
+    border="{{ false }}"
+    use-button-slot
+  >
+    <van-button slot="button" loading wx:if="{{ time !=0  }}" loading-text="{{ time }}" disable size="small" type="primary" />
+    <van-button slot="button"  wx:if="{{ time ==0  }}" size="small" type="primary" bindtap="sendSms">
+      发送验证码
+    </van-button>
+  </van-field>
+</van-cell-group>
+</view>
+
+<view class="ft"> 
+  <van-button type="info" size="large" bindtap="check">保存修改</van-button>
+</view>
