@@ -51,7 +51,7 @@
   <van-grid-item
     icon="bag-o"
     link-type="reLaunch"
-    url="/pages/dashboard/index"
+    url="../myOrder/index"
     text="我的订单"
   />
 </van-grid>

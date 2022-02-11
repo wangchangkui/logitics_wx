@@ -11,6 +11,7 @@ Page({
     name:"",
     card:"",
     fileList: [],
+    show:false
   },
   afterRead(event) {
     let temp=this.data.fileList;
@@ -37,6 +38,15 @@ Page({
 
   check(){
     let that=this;
+    that.setData({
+      show:true
+    })
+    let user=wx.getStorageSync('user');
+    if(user.userid == undefined){
+      wx.redirectTo({
+        url: '../login/index',
+      })
+    }
     var idcardReg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
     if(!idcardReg.test(this.data.card)){
       Toast('身份证不正确');
@@ -44,7 +54,6 @@ Page({
       // 上传文件
       let promiseArr=[];
       for(let i=0;i<that.data.fileList.length;i++){
-        console.log(that.data.fileList[i].url)
         promiseArr.push(new Promise((reslove,reject)=>{
           wx.uploadFile({
             filePath: that.data.fileList[i].url,
@@ -58,8 +67,32 @@ Page({
         }))
       }
       Promise.all(promiseArr).then(res=>{
-        console.log(res)
-        
+        wx.request({
+          url:"http://localhost:8080/user/upload/contrast",
+          method:'POST',
+          header:{
+            "Content-Type":"application/x-www-form-urlencoded"
+          },
+          data:{
+            filePath:res[0],
+            userName:that.data.name,
+            card:that.data.card,
+            userId:user.userid
+          },
+          success:res=>{
+            if(res.data.code==400004){
+              that.setData({
+                show:false
+              })
+              Toast(res.data.message);
+            }
+            if(res.data.code == 200000){
+              wx.redirectTo({
+                url: '../chageInfo/index',
+              })
+            }
+          }
+        })
       })
 
     }

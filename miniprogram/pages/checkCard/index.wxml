@@ -3,7 +3,7 @@
 </view>
 
 <van-toast id="van-toast" />
-
+<van-popup show="{{ show }}" bind:close="onClose">正在匹配中....</van-popup>
 <view class="bd">
 
   <van-cell-group>

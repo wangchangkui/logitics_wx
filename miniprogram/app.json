@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/checkCard/index",
-    "pages/my/index",
     "pages/index/index",
+    "pages/my/index",
+    "pages/checkCard/index",
     "pages/myOrder/index",
     "pages/onlineOrder/index",
     "pages/getGoods/index",
@@ -39,6 +39,7 @@
     ]
   },
   "usingComponents": {
+    "van-loading": "@vant/weapp/loading/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "van-empty": "@vant/weapp/empty/index",
