@@ -1,5 +1,5 @@
 <!--pages/getGoods/index.wxml-->
-
+<van-dialog id="van-dialog" />
 <view class="bd">
   <van-cell-group>
     <van-field model:value="{{ name }}" label="姓名" />

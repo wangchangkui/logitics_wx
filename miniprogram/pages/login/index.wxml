@@ -5,10 +5,11 @@
   height="3rem"
   fit="contain"
   src="https://s4.ax1x.com/2022/01/19/7DOlZj.png"
+  bindtap="password"
 />
 </view>
 
-<view class="bd">
+<view class="bd" wx:if="{{isPhone}}">
   <van-cell-group>
   <van-field
   model:value="{{ phone }}"
@@ -37,8 +38,40 @@
 </van-cell-group>
 </view>
 
-<view class="ft"> 
+<view class="bd" wx:if="{{ !isPhone }}">
+  <van-cell-group>
+  <van-field
+  model:value="{{ userName }}"
+    required
+    clearable
+    label="账号"
+    type="number"
+    placeholder="账号"
+    bind:click-icon="onClickIcon"
+  />
+
+  <van-field
+  model:value="{{ password }}"
+    required
+    clearable
+    label="密码"
+    type="password"
+    placeholder="密码"
+    bind:click-icon="onClickIcon"
+  />
+
+
+</van-cell-group>
+</view>
+
+<view class="ft" wx:if="{{ isPhone }}"> 
   <van-button type="info" size="large" bindtap="check">手机号登录</van-button>
+</view>
+<view class="ft" wx:if="{{ !isPhone }}"> 
+  <van-button type="info" size="large" bindtap="checkPass">登录</van-button>
+</view>
+<view class="ft1" wx:if="{{ !isPhone }}"> 
+  <van-button type="warning" size="large" bindtap="phone">手机号登录</van-button>
 </view>
 <view class="ft1"> 
  <van-button type="primary" size="large" bindtap="LoginSys">微信快速登录注册</van-button>

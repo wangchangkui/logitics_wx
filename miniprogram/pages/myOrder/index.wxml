@@ -26,7 +26,7 @@
           <van-field value="{{order[index].money}}" label="赏金" left-icon="balance-pay" disabled border="{{ false }}" />
         </van-cell-group>
         <van-card desc="{{order[index].order.address}}" title="配送地址">
-          <view slot="footer" wx:if="{{ order[index].order.status == 2 }}">
+          <view slot="footer" wx:if="{{ order[index].order.status == 1 }}">
             <van-button type="info" size="normal" bindtap="over" data-id="{{ order[index].order.orderId }}">完成</van-button>
           </view>
         </van-card>

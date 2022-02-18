@@ -8,9 +8,21 @@ Page({
   data: {
     time: 0,
     sms: "",
-    phone: ""
+    phone: "",
+    userName:"",
+    password:"",
+    isPhone:true
   },
-
+  phone(){
+    this.setData({
+      isPhone:true
+    })
+  },
+  password(){
+    this.setData({
+      isPhone:false
+    })
+  },
   check: function () {
     let that = this;
     let reg = /^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/;
@@ -51,6 +63,44 @@ Page({
         }
       })
     }
+  },
+
+  checkPass(){
+    if(this.data.userName == '' || this.data.password == ''){
+      wx.showToast({
+        title: '参数错误',
+        icon: 'error'
+      })
+    }else{
+      let that = this;
+      wx.request({
+        url: 'http://localhost:8080/user/passwdByUser',
+        method:'POST',
+        header:{
+          "Content-Type":"application/x-www-form-urlencoded"
+        },
+        data:{
+          userName:that.data.userName,
+          password:that.data.password
+        },
+        success:res=>{
+          console.log(res)
+          if(res.data.code==200000){
+            wx.setStorageSync("user", res.data.data);
+               // 最后跳转
+               wx.switchTab({
+                url: '../me/me',
+              })
+          }else{
+            wx.showToast({
+              title: '用户不存在',
+              icon: 'error'
+            })
+          }
+        }
+      })
+    }
+  
   },
 
   LoginSys: function () {

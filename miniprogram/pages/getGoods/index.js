@@ -9,10 +9,10 @@ Page({
     show: false,
     user: {},
     actions: [],
-    address: "四川省泸州市江阳区蓝天街道荆州国际B区",
-    money: 0.0,
+    address: "",
+    money: 0,
     phone: "",
-    getCode: "1234",
+    getCode: "",
     name: ""
   },
   check() {
@@ -109,9 +109,19 @@ Page({
       success: res => {
         if (res.data.code == 200000) {
           let datas = new Array();
+          if( res.data.data.length == 0){
+            Dialog.alert({
+              title: '消息',
+              message: '请先增加一个地址',
+            }).then(() => {
+              // 刷新页面
+              wx.redirectTo({
+                url: '../addAddress/index',
+              })
+            });
+          }
           for (let i = 0; i < res.data.data.length; i++) {
             if (res.data.data[i].isCheck == 1) {
-
               that.setData({
                 address: res.data.data[i].address,
                 name: res.data.data[i].username,
