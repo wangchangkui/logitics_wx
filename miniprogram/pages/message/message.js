@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 0
+    active: 0,
+    phone:18,
+    imageURL:"https://img1.baidu.com/it/u=2716398045,2043787292&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=800"
   },
 
   /**

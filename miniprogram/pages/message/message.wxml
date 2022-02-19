@@ -1,5 +1,62 @@
 <!--miniprogram/pages/message/message.wxml-->
-<text>miniprogram/pages/message/message.wxml</text>
+<view class="myView">
+  <van-sticky>
+    <van-notice-bar left-icon="volume-o" text="当前用户在线人数{{ people }} 人,请勿相信他人广告，以免上当受骗" />
+  </van-sticky>
+</view>
+
+
+
+<view class="myMessage">
+  <view class="myText">
+    <van-row>
+      <van-col span="4" offset="1">
+        <view class="pick">
+          <image src="https://img.yzcdn.cn/vant/cat.jpeg" mode="scaleToFill" style="display: block; width: 50px; height: 50px; border-radius: 10%;" />
+        </view>
+      </van-col>
+      <van-col span="8">
+        <view class="nickName">王长奎</view>
+        <view class="messages">
+          <van-field value="123456" readonly type="textarea" autosize border="{{ true }}" />
+        </view>
+      </van-col>
+    </van-row>
+  </view>
+
+  <view class="myText">
+    <van-row>
+      <van-col span="7" offset="13">
+        <view class="nickName-r">王长奎</view>
+        <view class="messages">
+          <van-field value="123456" readonly type="textarea" autosize border="{{ true }}" />
+        </view>
+      </van-col>
+      <van-col span="4">
+        <view class="pick">
+          <image src="https://img.yzcdn.cn/vant/cat.jpeg" mode="scaleToFill" style="display: block; width: 50px; height: 50px; border-radius: 10%;" />
+        </view>
+      </van-col>
+    </van-row>
+  </view>
+</view>
+
+
+
+
+
+
+<view class="btn">
+  <van-sticky>
+    <van-field model:value="{{ message }}"  type="textarea" placeholder="发送消息" autosize border="{{ true }}"  use-button-slot>
+      <van-button slot="button" size="small" type="primary">
+      发送消息
+      </van-button>
+    </van-field>
+  </van-sticky>
+</view>
+
+
 <van-tabbar active="{{ active }}" bind:change="onChange">
   <van-tabbar-item icon="home-o">首页</van-tabbar-item>
   <van-tabbar-item icon="chat-o">个人信息</van-tabbar-item>
