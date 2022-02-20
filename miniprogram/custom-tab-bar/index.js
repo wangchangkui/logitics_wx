@@ -9,7 +9,7 @@ Component({
 			},
 			{
 				icon: 'chat-o',
-				text: '消息',
+				text: '社区聊天',
 				url: '../message/message'
 			},
 			{

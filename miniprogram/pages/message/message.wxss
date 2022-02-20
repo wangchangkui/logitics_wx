@@ -2,11 +2,16 @@
 .myView{
 	height: 40px;
 }
+.kb{
+	width: 100%;
+	height: 10px;
+}
 page{
 	background-color: #fdfdfd;
 }
 .myMessage{
-  width: 100%;
+	width: 100%;
+	height: 500px;
 	margin: 0 auto;
 }
 .myMessage>.myText{
@@ -18,7 +23,7 @@ page{
 	height: 50px;
 }
 .nickName-r{
-	margin-left: 50px;
+
 	opacity: 60%;
 	font-size: 15px;
 	color: rgb(248, 3, 3);
