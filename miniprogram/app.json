@@ -1,18 +1,20 @@
 {
   "pages": [
-    "pages/message/message",
     "pages/index/index",
+    "pages/getGoods/index",
+    "pages/selectAddress/index",
+    "pages/message/message",
     "pages/my/index",
     "pages/checkCard/index",
     "pages/myOrder/index",
     "pages/onlineOrder/index",
-    "pages/getGoods/index",
     "pages/myAddress/index",
     "pages/addAddress/index",
     "pages/me/me",
     "pages/chageInfo/index",
     "pages/login/index",
     "pages/exit/index"
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -39,8 +41,8 @@
     ]
   },
   "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
     "van-sticky": "@vant/weapp/sticky/index",
-    
     "van-skeleton": "@vant/weapp/skeleton/index",
     "van-loading": "@vant/weapp/loading/index",
     "van-tab": "@vant/weapp/tab/index",

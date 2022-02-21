@@ -26,6 +26,7 @@ Page({
     show:false
   },
   getOrder(event){
+   console.log(event)
     let that=this;
     //先验证有没有登录
     let user=wx.getStorageSync('user');
@@ -43,7 +44,8 @@ Page({
       },
       data:{
         orderId:event.currentTarget.dataset.id,
-        userid:user.userid
+        userid:user.userid,
+        address:event.currentTarget.dataset.goodsAddress
       },
       success:res=>{
         if(res.data.code==200000){
@@ -98,12 +100,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     let that=this;
     wx.request({
       url: 'http://localhost:8080/order/orderList/1/5',
       method:'GET',
       success:res=>{
         if(res.data.code==200000){
+          console.log(res.data)
           that.setData({
             order:res.data.data.records
           })
@@ -119,13 +129,6 @@ Page({
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
 })

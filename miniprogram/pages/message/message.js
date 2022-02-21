@@ -39,7 +39,8 @@ Page({
     },
     message: [],
     messages:"",
-    bottom:"mes-0"
+    bottom:"mes-0",
+    current:1
   },
 
   /**
@@ -55,14 +56,13 @@ Page({
       },
       data:{
         "entity":{
+
         },
         "page":{
             "size":100,
-            "current":1
+            "current":that.data.current
         }
     },
-
-    
     success:res=>{
      that.setData({
        message:res.data.data.records,
@@ -70,8 +70,23 @@ Page({
      })
     }
     })
+
+    // 这里是心跳机制的监测
     let loginUser = wx.getStorageSync('user');
     this.connectWebScoket(loginUser);
+    setInterval(function(){
+      let data={
+        "userId":loginUser.userid,
+        "content":"ping",
+        "pic":loginUser.headerImage,
+        "nickName":loginUser.username,
+        "createTime":new Date().Format("yyyy-MM-dd HH:mm:ss")
+      };
+      let str=JSON.stringify(data);
+      wx.sendSocketMessage({
+        data: str,
+      })
+    },300000)
   },
 
   /**
@@ -99,7 +114,6 @@ Page({
         bottom: "mes-"+(that.data.message.length-1)
       });
 
-     
       wx.request({
         url: 'http://localhost:8080/websocket/online',
         method:'GET',
@@ -144,6 +158,8 @@ Page({
 
     wx.onSocketClose((result) => {
       console.log("webSocket已经关闭",result);
+      // 重连
+      this.connectWebScoket(this.data.user);
     })
 
     wx.onSocketError((result) => {
@@ -151,15 +167,17 @@ Page({
     })
 
     wx.onSocketMessage((result) => {
-      let mes=JSON.parse(result.data);
-      let es=this.data.message;
-      es.push(mes);
-
-      this.setData({
-        message:es,
-        bottom:"mes-"+(es.length-1)
-      })
-    
+      if(result.data=="pong"){
+        console.log("心跳监测正常")
+      }else{
+        let mes=JSON.parse(result.data);
+        let es=this.data.message;
+        es.push(mes);
+        this.setData({
+          message:es,
+          bottom:"mes-"+(es.length-1)
+        })
+      }
     })
   },
   sendM(){
@@ -178,7 +196,6 @@ Page({
           success:res=>{
             let mes=that.data.message;
             mes.push(data);
-        
             that.setData({
               message:mes,
               messages:"",

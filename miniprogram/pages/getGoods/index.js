@@ -1,4 +1,5 @@
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import data from '../getGoods/data'
 
 Page({
 
@@ -13,7 +14,15 @@ Page({
     money: 0,
     phone: "",
     getCode: "",
-    name: ""
+    name: "",
+    gaddress:data.address
+  },
+
+
+  selectGaddress(){
+    wx.redirectTo({
+      url: '../selectAddress/index',
+    })
   },
   check() {
     let that = this;
@@ -53,7 +62,7 @@ Page({
           "money":that.data.money,
           "phone":that.data.phone,
           "address":that.data.address,
-          "userName":that.data.name
+          "userName":that.data.name    
         },
         success:res=>{
           if(res.data.code==200000){
@@ -101,6 +110,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.data!='' || options.data != undefined){
+      this.setData({
+        gaddress:options.data
+      })
+    }
     let users = wx.getStorageSync('user');
     let that = this;
     wx.request({
