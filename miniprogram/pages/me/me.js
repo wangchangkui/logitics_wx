@@ -50,6 +50,7 @@ Page({
     let that =this;
     // 获取当前的登录状态
     var user = wx.getStorageSync('user');
+    console.log(user);
     if(user != null && user.username != undefined){
       that.setData({
         user:user
@@ -60,6 +61,12 @@ Page({
       })
     }
 
+  },
+
+  moneyInfo(){
+    wx.navigateTo({
+      url: '../moneyInfo/index',
+    })
   },
 
   LoginSys: function () {

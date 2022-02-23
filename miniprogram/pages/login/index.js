@@ -104,6 +104,7 @@ Page({
   },
 
   LoginSys: function () {
+    // 封装微信的登录
     let promiseArr = [];
     promiseArr.push(
       new Promise((resolve, reject) => {

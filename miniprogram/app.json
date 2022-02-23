@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/moneyInfo/index",
     "pages/index/index",
     "pages/getGoods/index",
     "pages/selectAddress/index",
