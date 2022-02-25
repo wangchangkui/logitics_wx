@@ -1,7 +1,7 @@
 <view>
   <van-cell-group>
     <van-field label="可提现余额" value="{{ user.decimals }} 元" placeholder="0.0" disabled border="{{ false }}" use-button-slot>
-      <van-button slot="button" size="small" bindtap="moneyInfo">
+      <van-button slot="button" size="small" bindtap="tx">
         提现
       </van-button>
 
@@ -11,12 +11,35 @@
     </van-field>
   </van-cell-group>
 </view>
+<van-dialog id="van-dialog" />
+
+
+<van-popup show="{{ show }}" round position="bottom" custom-style="height: 20%" bind:close="onClose">
+  <van-cell-group>
+    <van-field label="输入提现金额"    model:value="{{ tx }}" placeholder="0.0" border="{{ false }}" use-button-slot>
+      <van-button slot="button" size="small" bindtap="confirm">
+        提现
+      </van-button>
+    </van-field>
+  </van-cell-group>
+</van-popup>
+
+<van-popup show="{{ shows }}" round position="bottom" custom-style="height: 20%" bind:close="onClose2">
+  <van-cell-group>
+    <van-field label="输入充值金额"    model:value="{{ txi }}" placeholder="0.0" border="{{ false }}" use-button-slot>
+      <van-button slot="button" size="small" bindtap="confirm2">
+        充值
+      </van-button>
+    </van-field>
+  </van-cell-group>
+</van-popup>
+
 
 <van-divider contentPosition="center" wx:if="{{user.arre}}">
   不可提现{{user.arre}}元，原因如下
 </van-divider>
 
-<scroll-view refresher-enabled="true" scroll-y="true" >
+<scroll-view refresher-enabled="true" scroll-y="true">
   <view class="bd">
     <view wx:for="{{ orders }}" wx:key="index">
       <van-panel title="订单信息" desc="{{orders[index].username}} : {{orders[index].phone}}">
