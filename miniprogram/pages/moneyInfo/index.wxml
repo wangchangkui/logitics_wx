@@ -49,10 +49,7 @@
             </van-panel>
             <van-panel title="{{orders[index].create_time}}" desc="订单ID：{{orders[index].orderid}}">
             </van-panel>
-            <van-card desc="送货地址：{{orders[index].address}}" title="取货码：{{orders[index].code}}">
-              <view slot="footer">
-                <van-button size="small" bindtap="isCheck" data-id="{{allAddress[index].id}},{{allAddress[index].userId}}">提醒对方充值付款</van-button>
-              </view>
+            <van-card desc="送货地址：{{orders[index].address}}" title="相关信息：{{orders[index].code}}">
             </van-card>
           </van-panel>
         </view>

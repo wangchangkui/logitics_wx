@@ -1,0 +1,22 @@
+<scroll-view refresher-enabled="true" scroll-y="true">
+  <view class="bd">
+    <view wx:for="{{ orders }}" wx:key="index">
+      <van-panel title="订单信息" desc="{{orders[index].username}} : {{orders[index].phone}}">
+        <view>
+          <van-panel title="{{orders[index].goods_name}}" desc="未支付金额：{{orders[index].money}}" status="未支付">
+            <van-panel title="取货地址" desc="{{orders[index].goods_address}}">
+            </van-panel>
+            <van-panel title="{{orders[index].create_time}}" desc="订单ID：{{orders[index].order_id}}">
+            </van-panel>
+            <van-card desc="送货地址：{{orders[index].address}}" title="相关信息：{{orders[index].code}}">
+              <view slot="footer">
+              <van-button type="info" size="normal" bindtap="getOrder" data-id="{{ orders[index].aid }}">支付订单</van-button>
+            </view>
+            </van-card>
+          </van-panel>
+        </view>
+      </van-panel>
+      <van-divider />
+    </view>
+  </view>
+</scroll-view>

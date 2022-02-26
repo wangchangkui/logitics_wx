@@ -11,6 +11,7 @@ Page({
   },
 
   mytap(event){
+
     let that=this;
     wx.request({
       url: 'http://localhost:8080/order/getUserOrder',
@@ -19,7 +20,7 @@ Page({
         'Content-Type':'application/x-www-form-urlencoded'
       },
       data:{
-        userId:this.data.user.userid,
+        userId:that.data.user.userid,
         type:event.detail.index
       },
       success:res=>{
@@ -36,6 +37,7 @@ Page({
   onLoad: function (options) {
     let that=this;
     let user=wx.getStorageSync('user');
+    console.log(user)
     if(user.id == undefined){
       wx.redirectTo({
         url: '../login/index',
@@ -52,6 +54,7 @@ Page({
         type:0
       },
       success:res=>{
+        console.log(res.data.data)
         if(res.data.data){
           console.log(res.data)
           let temp =new Array();

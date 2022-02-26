@@ -15,11 +15,13 @@ Page({
       },
       {
         "icon": "todo-list-o",
-        "text": "我发布的"
+        "text": "充值记录",
+        "url":"../payList/index"
       },
       {
         "icon": "more-o",
-        "text": "我的消息"
+        "text": "提现记录",
+        "url":"../txPage/index"
       },
       {
         "icon": "bag-o",
@@ -28,12 +30,13 @@ Page({
       },
       {
         "icon": "clock-o",
-        "text": "历史记录"
+        "text": "我发布的",
+        "url":"../OrderListByUser/index"
       },
       {
         "icon": "close",
-        "text": "退出登录",
-        "url": "../exit/index"
+        "text": "我的欠费信息",
+        "url": "../myArre/index"
       },
     ]
   },

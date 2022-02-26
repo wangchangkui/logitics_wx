@@ -57,14 +57,16 @@ Page({
         },
         data:{
           "userId":that.data.user.userid,
-          "goodsName":"取快递",
+          "goodsName":that.data.getCode,
           "code":that.data.getCode,
           "money":that.data.money,
           "phone":that.data.phone,
           "address":that.data.address,
-          "userName":that.data.name    
+          "userName":that.data.name,
+          "goodsAddress":that.data.gaddress  
         },
         success:res=>{
+          console.log(res)
           if(res.data.code==200000){
             Dialog.alert({
               title: '消息',

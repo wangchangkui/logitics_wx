@@ -15,13 +15,13 @@
     icon="home-o"
     link-type="navigateTo"
     url="../getGoods/index"
-    text="点我取件"
+    text="寻求帮助"
   />
   <van-grid-item
     icon="todo-list-o"
     link-type="reLaunch"
-    url="/pages/dashboard/index"
-    text="在线打印"
+    url="../payList/index"
+    text="充值记录"
   />
 </van-grid>
 
@@ -35,8 +35,8 @@
   <van-grid-item
     icon="clock-o"
     link-type="reLaunch"
-    url="/pages/dashboard/index"
-    text="历史订单"
+    url="../OrderListByUser/index"
+    text="我发布的"
   />
 </van-grid>
 

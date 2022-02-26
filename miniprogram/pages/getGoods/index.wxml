@@ -4,19 +4,15 @@
   <van-cell-group>
     <van-field model:value="{{ name }}" label="姓名" />
     <van-field model:value="{{ phone }}" type="text" label="联系电话" />
-    <van-field value="{{ gaddress }}" label="取货地址" type="textarea" placeholder="默认地址" autosize border="{{ false }}" use-button-slot>
-      <van-button slot="button" size="small" type="primary" bindtap="selectGaddress">
-        选择地址
-      </van-button>
-    </van-field>
-    <van-field model:value="{{ getCode }}" type="text" label="取件码" />
-    <van-field value="{{ address }}" label="地址" type="textarea" placeholder="默认地址" autosize border="{{ false }}" use-button-slot>
+    <van-field  model:value="{{ gaddress }}" label="任务交接地址" type="textarea" placeholder="填写完整的地址" autosize border="{{ false }}" />
+    <van-field model:value="{{ getCode }}" type="textarea"  autosize   label="描述" border="{{ true }}" />
+    <van-field  model:value="{{ address }}" label="配送地址" type="textarea" placeholder="默认地址" autosize border="{{ false }}" use-button-slot>
       <van-button slot="button" size="small" type="primary" bindtap="selectAddress">
         选择地址
       </van-button>
     </van-field>
     <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />
-    <van-field model:value="{{ money }}" label="赏金" type="text" />
+    <van-field model:value="{{ money }}" label="酬金" type="text" />
   </van-cell-group>
 </view>
 <van-dialog id="van-dialog" />

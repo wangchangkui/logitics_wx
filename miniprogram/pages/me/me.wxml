@@ -13,7 +13,7 @@
 <view class="bd1">
   <van-cell-group>
   <van-field
-  label="余额" value="{{ user.decimals+user.arre }} 元" placeholder="0.0" disabled border="{{ false }}"
+  label="余额" value="*.* 元" placeholder="0.0" disabled border="{{ false }}"
     use-button-slot
   >
     <van-button slot="button" size="small" bindtap="moneyInfo">

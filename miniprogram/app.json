@@ -1,10 +1,13 @@
 {
   "pages": [
-
+    "pages/index/index",
+    "pages/myArre/index",
+    "pages/txPage/index",
+    "pages/OrderListByUser/index",
+    "pages/payList/index",
+    "pages/getGoods/index",
     "pages/moneyInfo/index",
     "pages/waitPay/index",
-    "pages/index/index",
-    "pages/getGoods/index",
     "pages/selectAddress/index",
     "pages/message/message",
     "pages/my/index",
@@ -17,6 +20,7 @@
     "pages/chageInfo/index",
     "pages/login/index",
     "pages/exit/index"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
