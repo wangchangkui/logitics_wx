@@ -157,6 +157,7 @@ Page({
                 "username": values[1].nickName,
                 "password": "",
                 "phone": "",
+                "name":values[1].nickName,
                 "sex":values[1].gender,
                 "userid": temp.data.openid,
                 "headerImage": values[1].avatarUrl,
