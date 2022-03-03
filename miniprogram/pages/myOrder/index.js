@@ -38,7 +38,7 @@ Page({
     let that=this;
     let user=wx.getStorageSync('user');
     console.log(user)
-    if(user.id == undefined){
+    if(user.userid == undefined){
       wx.redirectTo({
         url: '../login/index',
       })

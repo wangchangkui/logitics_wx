@@ -24,10 +24,10 @@ Page({
     show:false
   },
   getOrder(event){
-    let that=this;
     //先验证有没有登录
     let user=wx.getStorageSync('user');
-    if(user.id == undefined){
+
+    if(user.userid == undefined ){
       wx.redirectTo({
         url: '../login/index',
       })

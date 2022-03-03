@@ -157,6 +157,7 @@ Page({
                 "username": values[1].nickName,
                 "password": "",
                 "phone": "",
+                // 其实这里需要修改
                 "name":values[1].nickName,
                 "sex":values[1].gender,
                 "userid": temp.data.openid,
@@ -174,7 +175,7 @@ Page({
                   data: loginUser,
                   success: res => {
                     if (res.data.code == 200000) {
-                      wx.setStorageSync("user", loginUser)
+                      wx.setStorageSync('user', loginUser)
                     }
                   }
                 })
@@ -184,7 +185,7 @@ Page({
               }
               // 最后跳转
               wx.switchTab({
-                url: '../me/me',
+                url: '../index/index',
               })
             }
           })

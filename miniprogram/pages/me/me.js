@@ -52,9 +52,8 @@ Page({
   onLoad: function (options) {
     let that =this;
     // 获取当前的登录状态
-    var user = wx.getStorageSync('user');
-    console.log(user);
-    if(user != null && user.username != undefined){
+    var user = wx.getStorageSync("user");
+    if(user != null && user.username != ""){
       that.setData({
         user:user
       })
@@ -63,7 +62,6 @@ Page({
         url: '../login/index',
       })
     }
-
   },
 
   moneyInfo(){
@@ -174,19 +172,15 @@ Page({
     this.getTabBar().init();
     let that =this;
     var loginUser = wx.getStorageSync('user');
-    if(loginUser == null){
-      wx.redirectTo({
-        url: '../login/index',
-      })
-    }
+
     // 获取当前的登录状态
-    if(this.data.user==null){
-      if(loginUse !=null && loginUser.username != undefined){
+    if(that.data.user==null){
+      if(loginUse !=null && loginUser.username != ""){
         that.setData({
           user:loginUser
         })
       }else{
-        wx.redirectTo({
+        wx.navigateTo({
           url: '../login/index',
         })
       }
@@ -198,39 +192,4 @@ Page({
       url: '../my/index',
     })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

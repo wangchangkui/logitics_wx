@@ -75,161 +75,83 @@ Page({
 
   check: function () {
     let that = this;
+    console.log(that.data.user)
     let reg = /^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/;
     if (that.data.phone == "" || that.data.phone.length < 0 || that.data.phone.length > 11 || !reg.test(that.data.phone)) {
       wx.showToast({
         title: '请输入正确手机号',
         icon: 'error'
       })
-    } else if (that.data.sms == "") {
-      wx.showToast({
-        title: '请输入验证码',
-        icon: 'error'
-      })
-    } else {
-      wx.request({
-        url: 'http://localhost:8080/user/check',
-        method: "POST",
-        data: {
-          "phone": that.data.phone,
-          "sms": that.data.sms
-        },
-        header: {
-          "content-type": " application/x-www-form-urlencoded "
-        },
-        success: res => {
-          if (res.data.code == 400004) {
-            wx.showToast({
-              title: '验证码错误',
-              icon: 'error'
-            })
-            // 验证码验证成功
-          } else {
-            let that = this;
-            let userId = this.data.user.userid;
-            let path = "";
-            let code = 0;
-            new Promise((resolve, reject) => {
-              wx.uploadFile({
-                filePath: this.data.fileList[0].url,
-                name: 'file',
-                url: 'http://localhost:8080/user/upload',
-                formData: {
-                  "userId": userId
-                },
-                // 如果成功 则更新新的值
-                success: res => {
-                  let rs = JSON.parse(res.data);
-                  if (rs.code == 200000) {
-                    path = rs.data;
-                    code = 1;
-                    resolve(path, code);
-                  }
-                },
-                //如果失败 设置默认的值
-                fail: fail => {
-                  resolve(that.data.user.headerImage)
-                }
-              })
-            }).then(value => {
-              let users = {
-                headerImage: value,
-                username: that.data.name,
-                sex: that.data.sex == "男" ? 1 : 0,
-                phone: that.data.phone,
-                address: that.data.address,
-                userId: that.data.user.userid,
-                id: that.data.user.id,
-                decimals: that.data.user.decimals
-              }
-              // 这里我需要发送到服务器更新用户
-              wx.request({
-                url: 'http://localhost:8080/user/uploadUser',
-                method:"POST",
-                data:users,
-                header:{
-                  "content-type": "application/json; charset=UTF-8"
-                },
+    }  else {
+      let userId = that.data.user.userid;
+      let path = "";
+      let code = 0;
+      new Promise((resolve, reject) => {
+        wx.uploadFile({
+          filePath: that.data.fileList[0].url,
+          name: 'file',
+          url: 'http://localhost:8080/user/upload',
+          formData: {
+            "userId": userId
+          },
+          // 如果成功 则更新新的值
+          success: res => {
+            let rs = JSON.parse(res.data);
+            if (rs.code == 200000) {
+              path = rs.data;
+              code = 1;
+              resolve(path, code);
+            }
+          },
+          //如果失败 设置默认的值
+          fail: fail => {
+            resolve(that.data.user.headerImage)
+          }
+        })
+      }).then(value => {
+      
+        let users = {
+          headerImage: value,
+          username: that.data.name,
+          sex: that.data.sex == "男" ? 1 : 0,
+          phone: that.data.phone,
+          address: that.data.address,
+          userid: that.data.user.userid,
+        }
+        // 这里我需要发送到服务器更新用户
+        wx.request({
+          url: 'http://localhost:8080/user/uploadUser',
+          method:"POST",
+          data:users,
+          header:{
+            "content-type": "application/json; charset=UTF-8"
+          },
+          success:res=>{
+            if(res.data.code==200000){
+              wx.showToast({
+                title: '更新成功',
+                icon: 'sussess',
                 success:res=>{
-                  if(res.data.code==200000){
-                    wx.showToast({
-                      title: '更新成功',
-                      icon: 'sussess'
-                    })
-                  
-                    wx.setStorageSync('user', users);
-                    wx.redirectTo({
-                      url: '../my/index',
-                    })
-                  }
-                  else{
-                    wx.showToast({
-                      title: '更新失败',
-                      icon: 'error'
-                    })
-                  }
+                  wx.setStorageSync('user', users);
+                  wx.redirectTo({
+                    url: '../my/index',
+                  })
                 }
               })
-            })
+            }
+            else{
+              wx.showToast({
+                title: '更新失败',
+                icon: 'error'
+              })
+            }
           }
-        }
+        })
       })
     }
   },
 
-  sendSms: function () {
-    let that = this;
-    let reg = /^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/;
-    if (that.data.phone == "" || that.data.phone.length < 0 || that.data.phone.length > 11 || !reg.test(that.data.phone)) {
-      wx.showToast({
-        title: '请输入正确手机号',
-        icon: 'error'
-      })
-    } else {
 
-      // 发送任务
-      wx.request({
-        url: 'http://localhost:8080/user/sendSms',
-        method: "POST",
-        data: {
-          "phone": that.data.phone
-        },
-        header: {
-          "content-type": " application/x-www-form-urlencoded "
-        },
-        success: res => {
-          if (res.data.code != 200000) {
-            wx.showToast({
-              title: '该手机号未注册',
-              icon: 'error'
-            })
-          } else {
-            // 定时器
-            let that = this;
-            that.setData({
-              time: 60
-            })
-
-            // 定时器接受
-            var times = 60
-            var i = setInterval(function () {
-              times--
-              if (times <= 0) {
-                that.setData({
-                  time: 0
-                })
-                clearInterval(i)
-              } else {
-                that.setData({
-                  time: times
-                })
-              }
-            }, 1000)
-          }
-        }
-      })
-    }
-  },
 
   onClickLeft: function () {
     wx.redirectTo({

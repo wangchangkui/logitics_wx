@@ -29,7 +29,7 @@
   <van-button type="info" size="large" bindtap="chageInfo">修改信息</van-button>
 </view>
 
-<view class="ft1" wx:if="{{user.idCard == '' }}">
+<view class="ft1" wx:if="{{user.idCard == '' || user.idCard==null }}">
   <van-button type="primary" size="large" bindtap="checkUser">开始认证</van-button>
 </view>
 
