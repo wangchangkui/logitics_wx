@@ -11,7 +11,7 @@
 
 <view class="bd">
   <view wx:for="{{ order }}" wx:key="index">
-    <van-panel title="{{order[index].goods + '订单'}}" desc="{{'联系电话：'+order[index].order.phone}}">
+    <van-panel title="取货地址：{{order[index].goods + '订单'}}">
       <view>
         <van-cell-group>
           <van-field value="{{order[index].createTime}}" label="抢到订单时间" left-icon="aim" disabled border="{{ false }}" />

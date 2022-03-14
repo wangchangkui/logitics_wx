@@ -44,8 +44,8 @@
     <view wx:for="{{ orders }}" wx:key="index">
       <van-panel title="订单信息" desc="{{orders[index].username}} : {{orders[index].phone}}">
         <view>
-          <van-panel title="{{orders[index].goods_name}}" desc="未支付金额：{{orders[index].money}}" status="未支付">
-            <van-panel title="取货地址" desc="{{orders[index].goods_address}}">
+          <van-panel  desc="未支付金额：{{orders[index].money}}" status="未支付">
+            <van-panel title="取货地址" desc="{{orders[index].goods_name}}">
             </van-panel>
             <van-panel title="{{orders[index].create_time}}" desc="订单ID：{{orders[index].orderid}}">
             </van-panel>
