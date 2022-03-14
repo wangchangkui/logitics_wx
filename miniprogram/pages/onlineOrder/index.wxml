@@ -15,18 +15,15 @@
 <view class="bd">
   <van-empty description="无内容" wx:if="{{ !order && !show }}" />
   <view wx:for="{{ order }}" wx:key="index">
-    <van-panel title="{{order[index].goodsName}}" >
+    <van-panel title="配送地址：{{order[index].address}}" >
       <view>
         <van-cell-group>
           <van-field value="{{order[index].createTime}}" label="订单时间" left-icon="aim" disabled border="{{ false }}" />
         </van-cell-group>
         <van-cell-group>
-          <van-field value="{{order[index].goodsAddress}}" label="取货地址" left-icon="aim" disabled border="{{ false }}" />
-        </van-cell-group>
-        <van-cell-group>
           <van-field value="{{order[index].money}}" label="赏金" left-icon="balance-pay" disabled border="{{ false }}" />
         </van-cell-group>
-        <van-card desc="{{order[index].address}}" title="配送地址">
+        <van-card desc="{{order[index].goodsName}}" title="取货地址">
           <view slot="footer">
             <van-button type="info" size="normal" bindtap="getOrder" data-id="{{ order[index].orderId }}" data-add="{{order[index].goodsAddress}}">抢单</van-button>
           </view>

@@ -1,5 +1,6 @@
 <scroll-view refresher-enabled="true" scroll-y="true">
   <view class="bd">
+    <van-empty description="无内容" wx:if="{{ !orders && !show }}" />
     <view wx:for="{{ orders }}" wx:key="index">
       <van-panel title="订单信息" desc="{{orders[index].username}} : {{orders[index].phone}}">
         <view>
