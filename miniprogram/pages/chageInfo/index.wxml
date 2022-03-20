@@ -36,12 +36,6 @@
     type="text"
     label="性别"
   />
-
-  <van-field
-  model:value="{{ address }}"
-    label="地址"
-    type="text"
-  />
 </van-cell-group>
 </view>
 

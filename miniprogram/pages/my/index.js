@@ -49,27 +49,15 @@ Page({
   onShow: function () {
     let that=this;
     let login = wx.getStorageSync('user')
-    if(login.username == undefined){
+    if(login.username == undefined || login.userId == ''){
       wx.redirectTo({
         url: '../login/index',
       })
+    }else{
+      that.setData({
+        user:login
+      })
     }
-    wx.request({
-      url: 'http://localhost:8080/user/getUser',
-      method:'POST',
-      header:{
-        "Content-Type":"application/x-www-form-urlencoded",
-      },
-      data:{
-        "openId":login.userid
-      },
-      success:res=>{
-        this.setData({
-          user:res.data.data
-        })
-      }
-    })
-   
   },
 
 })

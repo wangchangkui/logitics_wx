@@ -6,7 +6,7 @@
   <view class="h_img">
     <van-image round width="6rem" height="6rem" src="{{user.headerImage}}" />
     <view class="h_info">
-      <text style="font-size: 14px;">{{user.username}}</text>
+      <text style="font-size: 14px;">名称：{{user.username}}</text>
       <van-divider />
     </view>
   </view>
@@ -14,7 +14,7 @@
 
 <view class="bd">
   <van-cell-group>
-    <van-field value="{{ user.username }}" label="名称" disabled />
+    <van-field value="{{ user.name }}" label="真实姓名" disabled />
     <van-field value="{{ user.decimals }}" type="text" label="余额" disabled />
 
     <van-field value="{{ user.phone }}" type="text" label="电话" disabled />

@@ -15,7 +15,6 @@ Page({
     name: "",
     phone: "",
     sex: "",
-    address: "",
     time: 0,
     sms: ""
   },
@@ -32,27 +31,12 @@ Page({
       fileList: fileLists
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     let login = wx.getStorageSync('user')
-    if (login.username == undefined) {
+    if (login.username == undefined || login.userid=='') {
       wx.redirectTo({
         url: '../login/index',
       })
@@ -69,13 +53,11 @@ Page({
       name: login.username,
       phone: login.phone,
       sex: login.sex == 1 ? "男" : "女",
-      address: login.address,
     })
   },
 
   check: function () {
     let that = this;
-    console.log(that.data.user)
     let reg = /^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/;
     if (that.data.phone == "" || that.data.phone.length < 0 || that.data.phone.length > 11 || !reg.test(that.data.phone)) {
       wx.showToast({
@@ -84,6 +66,7 @@ Page({
       })
     }  else {
       let userId = that.data.user.userid;
+      console.log(that.data.user)
       let path = "";
       let code = 0;
       new Promise((resolve, reject) => {
@@ -114,7 +97,6 @@ Page({
           username: that.data.name,
           sex: that.data.sex == "男" ? 1 : 0,
           phone: that.data.phone,
-          address: that.data.address,
           userid: that.data.user.userid,
         }
         // 这里我需要发送到服务器更新用户
@@ -127,13 +109,21 @@ Page({
           },
           success:res=>{
             if(res.data.code==200000){
+              let cacheUser=wx.getStorageSync('user');
+              cacheUser.headerImage=users.headerImage;
+              cacheUser.username=users.username;
+              cacheUser.sex=users.sex;
+              cacheUser.phone=users.phone;
+              wx.setStorageSync('user', cacheUser);
+              that.setData({
+                fileList:[]
+              })
               wx.showToast({
                 title: '更新成功',
                 icon: 'sussess',
                 success:res=>{
-                  wx.setStorageSync('user', users);
-                  wx.redirectTo({
-                    url: '../my/index',
+                  wx.switchTab({
+                    url: '../me/me',
                   })
                 }
               })
