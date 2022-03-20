@@ -27,9 +27,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  let that=this;
+    let that=this;
    let user = wx.getStorageSync('user');
-   if(user.userid == '' || user.userid == undefined || user.userid== null){
+   if(user.userid == '' || user.userid == undefined){
      wx.redirectTo({
        url: '../login/index',
      })
@@ -40,9 +40,11 @@ Page({
       success:res=>{
         console.log(res)
         if(res.data.data){
-          that.setData({
-            order:res.data.data
-          })
+          if(res.data.data.length>0){
+            that.setData({
+              order:res.data.data
+            })
+          }
         }
       }
     })

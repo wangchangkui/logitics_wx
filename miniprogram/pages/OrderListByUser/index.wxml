@@ -9,9 +9,9 @@
 
 <van-dialog id="van-dialog" />
 <view class="bd">
-  <van-empty description="无内容" wx:if="{{ !order && !show }}" />
+  <van-empty description="无内容" wx:if="{{ order==null && !show }}" />
   <view wx:for="{{ order }}" wx:key="index">
-    <van-panel title="{{order[index].goodsName}}" >
+    <van-panel title="取货地址：{{order[index].goodsName}}" >
       <view>
         <van-cell-group>
           <van-field value="{{order[index].createTime}}" label="订单时间" left-icon="aim" disabled border="{{ false }}" />
@@ -23,9 +23,7 @@
           <van-field wx:if="{{order[index].status ==4}}" value="已退单" label="完成状态" left-icon="aim" disabled border="{{ false }}" />
           <van-field wx:if="{{order[index].status ==5}}" value="已完成" label="完成状态" left-icon="aim" disabled border="{{ false }}" />
         </van-cell-group>
-        <van-cell-group>
-          <van-field value="{{order[index].goodsAddress}}" label="取货地址" left-icon="aim" disabled border="{{ false }}" />
-        </van-cell-group>
+    
         <van-cell-group>
           <van-field value="{{order[index].money}}" label="赏金" left-icon="balance-pay" disabled border="{{ false }}" />
         </van-cell-group>
