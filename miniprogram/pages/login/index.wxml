@@ -1,0 +1,25 @@
+
+<view class="imgs">
+  <image src="https://s1.ax1x.com/2022/04/01/q4wgvd.jpg" />
+</view>
+
+<van-toast id="van-toast" />
+<view>
+  <van-row>
+    <van-col span="2"  offset="16">
+      <van-checkbox value="{{ agreement }}" bind:change="onChange"></van-checkbox>
+    </van-col>
+    <van-col span="6">
+      <view bindtap="CheckTheAgreement">
+        用户协议
+      </view>
+    </van-col>
+  </van-row>
+  
+
+  <view class="ft1"> 
+   <van-button type="primary" size="large" bindtap="LoginSys">微信快速登录注册</van-button>
+  </view>
+
+</view>
+

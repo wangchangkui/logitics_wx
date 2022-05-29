@@ -1,0 +1,9 @@
+<view class="up_img_Wrap">
+    <image wx:if="{{upimg}}" src="{{upimg}}" />
+     <!-- wx:if='{{customerLevel.value}}' class="iconLevel"  -->
+     
+      <icon type="clear" size="23" color="red">
+      <!--  bindtap="handleDeleteImage" data-index="{{index}}" -->
+      </icon>
+</view>
+

@@ -1,0 +1,50 @@
+<view class="nav">
+  <van-tabs bind:click="mytap">
+    <van-tab title="正在进行的订单">
+
+    </van-tab>
+    <van-tab title="已经完成的订单">
+
+    </van-tab>
+  </van-tabs>
+</view>
+
+<view class="bd">
+  <view wx:if="{{order.length < 1}}">
+    <van-empty class="custom-image"
+      image="https://img.yzcdn.cn/vant/custom-empty-image.png"
+      description="暂无订单哦，快去接单吧！"
+    />
+  </view>
+  <view wx:for="{{ order }}" wx:key="index">
+    <van-steps
+      steps="{{ steps }}"
+      active="{{ item.active }}"
+      active-icon="success"
+      active-color="#38f"
+    />
+    <van-panel title="取货地址：{{order[index].goods + '订单'}}">
+      <view>
+        <van-cell-group>
+          <van-field value="{{order[index].createTime}}" label="抢到订单时间" left-icon="aim" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field value="{{order[index].order.userName}}" label="联系人" left-icon="user-o" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field value="{{order[index].order.phone}}" label="联系电话" left-icon="phone-o" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field value="{{order[index].money}}" label="赏金" left-icon="balance-pay" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-card desc="{{order[index].order.address}}" title="配送地址">
+          <view slot="footer" wx:if="{{ order[index].order.status == 2 }}">
+            <van-button type="info" size="normal" bindtap="over" data-id="{{ order[index].order.orderId }}">确认完成</van-button>
+          </view>
+        </van-card>
+      </view>
+    </van-panel>
+    <van-divider />
+  </view>
+</view>
+<van-dialog id="van-dialog" />

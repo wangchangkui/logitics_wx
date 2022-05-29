@@ -1,0 +1,11 @@
+
+<van-dialog id="van-dialog" />
+<!-- <view wx:for="{{ list }}" wx:key="noticeId"> -->
+  <view class="bd">
+    <van-cell-group>
+          <h1 class="title">{{notice.noticeTitle}}</h1>
+          <view class="create_time">{{notice.createTime}}</view>
+          <rich-text nodes="{{notice.noticeContent}}"></rich-text>
+    </van-cell-group>
+  </view>
+<!-- </view> -->

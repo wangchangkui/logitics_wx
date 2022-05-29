@@ -1,0 +1,51 @@
+
+<view class="fb_main">
+    <view class="header">
+        <view class="title_view">问题种类</view>
+        <view class="h_img">
+
+            <van-radio-group value="{{ radio }}"
+                bind:change="onChange"
+                direction="horizontal">
+
+                <van-radio name="1" class="text_view"><van-icon name="warning" size="20px" />BUG反馈</van-radio>
+                <van-radio name="2" class="text_view"><van-icon name="eye" size="20px"/>性能问题</van-radio>
+                <van-radio name="3" class="text_view"><van-icon name="question" size="20px"/>功能建议</van-radio>
+                <van-radio name="4" class="text_view"><van-icon name="more" size="20px"/>其他建议</van-radio>
+
+            </van-radio-group>
+        </view>
+    </view>
+    <view class="title_view">
+        <van-cell-group>
+            <van-field
+                required
+                label="标题"
+                model:value="{{ title }}"
+                placeholder="请输入标题"
+                border="{{ true }}"
+            />
+        </van-cell-group>
+    </view>
+    
+    <view class="fb_content">
+        <textarea maxlength="500" placeholder="请描述您的问题" value="{{textVal}}" bindinput="handleTextInput"></textarea>   
+        <view class="fb_tool">
+            <van-toast style="font-size: larger;" id="van-toast" />
+            <button  bind:tap="handleChooseImage">+</button>
+                <view class="up_img_item"  wx:for="{{chooseImages}}" wx:key="*this">
+                    <upimg wx:if="{{item}}" upimg="{{item}}" bindtap="handleImageDelete" data-index="{{index}}"></upimg>
+                </view>
+        </view>
+    </view>
+    <van-notice-bar class="notice_bar" left-icon="volume-o" scrollable="{{ false }}" text="注：每次只支持上传一张图片。" />
+
+        <view class="form_btn_wrap">
+            <button type="warn" bind:tap="handleFormSubmit">
+                <icon class="but_warn" type="success_no_circle" size="23" color="white">
+                </icon>
+                <text class="but_warn" >提交</text>
+            </button>
+        </view>
+</view>
+

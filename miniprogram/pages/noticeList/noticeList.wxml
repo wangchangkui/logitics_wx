@@ -1,0 +1,14 @@
+<view class="body">
+
+  <van-cell-group inset="true" wx:for="{{ list }}" wx:key="noticeId">
+    <van-cell title-style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;"
+      icon="volume-o" is-link 
+              title="{{item.noticeTitle}}" 
+              link-type="navigateTo" 
+              url="/pages/notice/notice?noticeId={{item.noticeId}}"
+              label-class=""
+              label="{{item.createTime}}"/>
+    <!-- <van-cell icon="volume-o" is-link title="{{item.noticeTitle}}" link-type="navigateTo" url="'/pages/notice/notice?noticeId='+{{noticeId}}"/> -->
+  </van-cell-group>
+
+</view>

@@ -1,0 +1,39 @@
+<view class="nav">
+  <van-nav-bar title="个人信息" left-text="返回" left-arrow bind:click-left="onClickLeft" safe-area-inset-top="false" placeholder="true" custom-style="padding: 0;" />
+</view>
+
+<view class="header">
+  <view class="h_img">
+    <van-image round width="6rem" height="6rem" src="{{user.headerImage}}" />
+    <view class="h_info">
+      <text style="font-size: 14px;">{{user.username}}</text>
+      <van-divider />
+    </view>
+  </view>
+</view>
+
+<view class="bd">
+  <van-cell-group>
+    <van-field value="{{ user.username }}" label="姓名" disabled />
+
+    <van-field value="{{ user.phone }}" type="text" label="电话" disabled />
+
+    <van-field value="{{ user.grande== 1 ? '男':'女' }}" type="text" label="性别" disabled />
+
+    <van-field value="{{ user.name }}" label="真实姓名" disabled />
+    
+  </van-cell-group>
+</view>
+
+
+<view class="ft">
+  <van-button type="info" size="large" bindtap="chageInfo">修改信息</van-button>
+</view>
+
+<view class="ft1" wx:if="{{user.idCard == '' || user.idCard==null }}">
+  <van-button type="primary" size="large" bindtap="checkUser">开始认证</van-button>
+</view>
+
+<view class="ft1">
+  <van-button type="danger" size="large" bindtap="exit">退出登录</van-button>
+</view>

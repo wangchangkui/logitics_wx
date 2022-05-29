@@ -1,0 +1,142 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "地址",
+          "pathName": "pages/myAddress/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "编辑地址",
+          "pathName": "pages/addAddress/index",
+          "query": "id=6",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "发布请求",
+          "pathName": "pages/getGoods/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的订单",
+          "pathName": "pages/myOrder/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的订单",
+          "pathName": "pages/OrderListByUser/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "订单大厅",
+          "pathName": "pages/onlineOrder/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "余额首页",
+          "pathName": "pages/moneyInfo/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "聊天室",
+          "pathName": "pages/message/message",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "webSocket",
+          "pathName": "pages/webSocket/webSocket",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "充值记录",
+          "pathName": "pages/payList/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "通知页面",
+          "pathName": "pages/notice/notice",
+          "query": "noticeId=13",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的信息信息",
+          "pathName": "pages/my/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/me/me",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "反馈页面",
+          "pathName": "pages/feedback/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "公告列表",
+          "pathName": "pages/noticeList/noticeList",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "登录页",
+          "pathName": "pages/login/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        }
+      ]
+    }
+  }
+}

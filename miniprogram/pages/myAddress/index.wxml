@@ -1,0 +1,59 @@
+<view class="nav">
+  <van-nav-bar title="我的地址" left-text="返回" right-text="新增" left-arrow bind:click-left="onClickLeft" safe-area-inset-top="false" placeholder="true" custom-style="padding: 0;" bind:click-right="onClickRight" />
+</view>
+
+<view class="bd" >
+  <van-panel title="默认地址">
+      <view class="address_css">
+        <van-cell-group inset>
+          <van-cell icon="manager-o" title="联系人" value="{{address.username}}" />
+          <van-cell icon="phone-o" title="联系电话" value="{{address.phone}}"/>
+          <van-cell icon="location-o" title="地址" value="{{address.address}}"/>
+        </van-cell-group>
+        <van-row>
+          <van-col offset="14" span="4">
+            <van-button size="small"  bind:click="edit" data-id="{{address.id}}">编辑</van-button>
+          </van-col>
+          <van-col span="4">
+            <van-button size="small"  bindtap="delete" data-id="{{address.id}}">删除</van-button>
+          </van-col>
+        </van-row>
+      </view>
+    </van-panel>
+</view>
+<view wx:if="{{allAddress.length > 0}}">
+<view wx:for="{{ allAddress }}" wx:key="index">
+  <view class="bd">
+    <van-panel title="其他地址">
+      <view class="address_css">
+        <van-cell-group inset>
+          <van-cell icon="manager-o" title="联系人" value="{{item.username}}" />
+          <van-cell icon="phone-o" title="联系电话" value="{{item.phone}}"/>
+          <van-cell icon="location-o" title="地址" value="{{item.address}}"/>
+        </van-cell-group>
+        <van-row>
+          <van-col offset="8" span="6">
+            <van-button size="small" custom-style="width:80px" bindtap="isCheck" data-id="{{item.id}},{{item.userId}}">设置默认</van-button>
+          </van-col>
+          <van-col span="4">
+            <van-button size="small"  bind:click="edit" data-id="{{item.id}}">编辑</van-button>
+          </van-col>
+          <van-col span="4">
+            <van-button size="small"  bindtap="delete" data-id="{{item.id}}">删除</van-button>
+          </van-col>
+        </van-row>
+      
+      </view>
+        <!-- <van-card desc="{{allAddress[index].address}}" title="地址">
+          <view slot="footer">
+            <van-button size="small" bindtap="isCheck" data-id="{{allAddress[index].id}},{{allAddress[index].userId}}">设置默认</van-button>
+            <van-button size="small" bind:click="edit" data-id="{{allAddress[index].id}}">编辑</van-button>
+            <van-button size="small" bindtap="delete" data-id="{{allAddress[index].id}}">删除</van-button>
+          </view>
+        </van-card> -->
+      <!-- </view> -->
+    </van-panel>
+    <van-divider />
+  </view>
+</view>
+</view>

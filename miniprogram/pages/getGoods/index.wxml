@@ -1,0 +1,22 @@
+<!--pages/getGoods/index.wxml-->
+<van-dialog id="van-dialog" />
+<view class="bd">
+  <van-cell-group>
+    <van-field required model:value="{{ userName }}" label="联系人" />
+    <van-field required model:value="{{ phone }}" type="text" label="联系电话" />
+    <van-field required model:value="{{ goodsAddress }}" label="取货地址" type="textarea" placeholder="填写完整的地址" autosize border="{{ false }}" />
+    <van-field required model:value="{{ getCode }}" type="textarea"  autosize   label="描述" border="{{ true }}" />
+    <van-field required model:value="{{ address }}" label="配送地址" type="textarea" placeholder="默认地址" autosize border="{{ false }}" use-button-slot>
+      <van-button slot="button" size="small" type="primary" bindtap="selectAddress">
+        选择地址
+      </van-button>
+    </van-field>
+    <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />
+    <van-field required model:value="{{ money }}" label="酬金" type="text" />
+  </van-cell-group>
+</view>
+<van-dialog id="van-dialog" />
+
+<view class="ft">
+  <van-button type="info" size="large" bindtap="check">发送订单</van-button>
+</view>

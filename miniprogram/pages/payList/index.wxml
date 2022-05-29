@@ -1,0 +1,24 @@
+<view class="bd" wx:if="{{ show }}">
+  <van-empty image="network" description="网络错误" />
+</view>
+
+<scroll-view scroll-y="true" refresher-enabled="true" class="bd">
+  <van-empty description="无内容" wx:if="{{ !order && !show }}" />
+  <view wx:for="{{ order }}" wx:key="index">
+      <view>
+        <van-cell-group>
+          <van-field value="{{order[index].createTime}}" label="充值时间" left-icon="aim" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field value="{{order[index].payType}}" label="充值方式" left-icon="user-o" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field value="{{order[index].money}}" label="充值金额" left-icon="balance-pay" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field value="{{order[index].orderId}}" label="订单编号" left-icon="balance-pay" disabled border="{{ false }}" />
+        </van-cell-group>
+      </view>
+    <van-divider />
+  </view>
+</scroll-view>

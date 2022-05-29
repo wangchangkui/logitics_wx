@@ -1,0 +1,79 @@
+/* miniprogram/pages/index/index.wxss */
+
+page{
+  background-color: #ffff;
+}
+/* 轮播图开始 */
+.swipeable-header {
+  margin: 0 auto;
+  width: 327rpx !important;
+  border: 0 !important;
+}
+
+.blank{
+  height: 20px;
+}
+
+.swipeable-class-inactive {
+  border-width: 8rpx !important;
+}
+.swipeable-class-active {
+  font-weight: 900 !important;
+  font-size: 34rpx !important;
+  border-width: 6rpx !important;
+}
+
+.continer .continer-swiper{
+  width: 100%;
+  height: 250px;
+}
+.continer .continer-swiper image{
+  width: 100%;
+  height: 250px;
+}
+/* 轮播图结束 */
+
+
+/* 图标 */
+.icon-a{
+  display: flex; 
+  position: absolute; 
+  left: 250px; 
+  top: 35px
+}
+/* 卡片A */
+.view-a{
+    position: relative;
+    width: 90%;
+    background: rgb(0 191 255);
+    height: 180px; 
+    display: block;
+    box-sizing: border-box;
+    left: 5%;
+    top: 15px; 
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #cdcfcf; 
+    background-image: url(https://image.weilanwl.com/color2.0/cardBg.png); 
+}
+
+/* 卡片B */
+.view-b{
+  position: relative;
+  width: 90%;
+  background: rgb(30 144 255);
+  height: 180px; 
+  box-sizing: border-box;
+  left: 5%;
+  top: 25px; 
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #cdcfcf; 
+
+}
+/* 文字 */
+.text-a{
+  position: relative; 
+  left: 25px; 
+  top: 35px; 
+  font-size: 25px;
+  color: #fff;
+}

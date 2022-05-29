@@ -1,0 +1,72 @@
+<!--miniprogram/pages/message/message.wxml-->
+
+<van-overlay show="{{ show }}">
+  <view class="wrapper">
+    <!-- <view class="block" catch:tap="noop" /> -->
+    <view class="block">
+      <van-loading catch:tap="noop" color="#46A3FF" size="50px"  type="spinner" vertical >连接服务器中...</van-loading>
+    </view>
+  </view>
+</van-overlay>
+
+<view class="myView">
+  <van-sticky>
+    <van-notice-bar left-icon="volume-o" text="当前用户在线人数{{ people }} 人,请勿相信他人广告，以免上当受骗" />
+  </van-sticky>
+</view>
+
+<view class="content_body">
+  <scroll-view class="myMessage" refresher-enabled="true" scroll-y="true" scroll-into-view="{{ bottom }}" style="height:550px;">
+    <view wx:for="{{message}}" wx:key="index">
+      <view id="mes-{{index}}" class="myText" wx:if="{{message[index].userId != user.userId}}" >
+        <van-row>
+          <van-col span="4" offset="1">
+            <view class="pick">
+              <image src="{{message[index].pic}}" mode="scaleToFill" style="display: block; width: 50px; height: 50px; border-radius: 10%;" />
+            </view>
+          </van-col>
+          <van-col span="8">
+            <view class="nickName">{{message[index].nickName}}</view>
+            <view class="messages">
+              <van-field value="{{message[index].content}}" readonly type="textarea" autosize border="{{ true }}" />
+            </view>
+          </van-col>
+        </van-row>
+        <view class="kb"></view>
+      </view>
+      
+      <view class="myText" id="mes-{{index}}" wx:if="{{message[index].userId ==  user.userId}}">
+        <van-row>
+          <van-col span="7" offset="13">
+            <view class="messages">
+              <van-field value="{{message[index].content}}" readonly type="textarea" autosize border="{{ true }}" />
+            </view>
+          </van-col>
+          <van-col span="4">
+            <view class="pick">
+              <image src="{{message[index].pic}}" mode="scaleToFill" style="display: block; width: 50px; height: 50px; border-radius: 10%;" />
+            </view>
+          </van-col>
+        </van-row>
+        <view class="kb"></view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="btn">
+    <!-- <van-sticky> -->
+      <van-field model:value="{{ messages }}" type="textarea" placeholder="发送消息" 
+                 border="{{ true }}" use-button-slot size="large">
+        <van-button slot="button" size="small" type="primary" bindtap="sendM">
+          发送消息
+        </van-button>
+      </van-field>
+    <!-- </van-sticky> -->
+  </view>
+</view>
+
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="chat-o">社区聊天</van-tabbar-item>
+  <van-tabbar-item icon="user-o">我的</van-tabbar-item>
+</van-tabbar>
