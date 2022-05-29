@@ -1,8 +1,0 @@
-/* pages/moneyInfo/index.wxss */
-.bd{
-  width: 80%;
-  background-color:#fdfdfd;
-  margin: 30px auto;
-  box-shadow: 0 0 9px 3px #999;
-}
-
